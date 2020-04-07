@@ -17,12 +17,12 @@ export class SignupComponent implements OnInit
   public password:any;
   public apiKey:any;
 
-  constructor(public appService: AppService,public router:Router, private toastr:ToastrService) { 
+  constructor(public appService: AppService,public router:Router, private toastr:ToastrService) 
+  { }
 
-  }
+  ngOnInit(): void 
+  { }
 
-  ngOnInit(): void {
-  }
   public goToSignIn:any=()=>
   { 
     this.router.navigate(['/'])

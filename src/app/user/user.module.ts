@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   imports: [
     CommonModule,
     FormsModule,
-    ToastrService.forRoot(),
+    ToastrService,
     RouterModule.forChild([
       {path:'signup',component:SignupComponent}
     ])

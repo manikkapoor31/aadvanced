@@ -5,16 +5,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { ToastrService} from 'ngx-toastr' 
 
-
-
 @NgModule({
-  declarations: [ChatBoxComponent],
+  
   imports: [
     CommonModule,
     BrowserAnimationsModule,
     RouterModule.forChild([
       {path:'chat',component: ChatBoxComponent}
     ])
-  ]
+  ],
+  declarations: [ChatBoxComponent]
 })
 export class ChatModule { }
