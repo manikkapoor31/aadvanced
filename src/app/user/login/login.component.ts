@@ -4,10 +4,9 @@ import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { AppService } from './../../app.service';
 import { ToastrService } from 'ngx-toastr';
 
-
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
+  templateUrl: '././login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
@@ -17,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(public appService: AppService,public router: Router,private toastr: ToastrService) 
   {}
-  s
+  
   ngOnInit() 
   {}
 

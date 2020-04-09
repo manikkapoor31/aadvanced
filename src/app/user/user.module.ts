@@ -5,14 +5,14 @@ import { SignupComponent } from './signup/signup.component';
 import { RouterModule,Routes } from '@angular/router';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [LoginComponent, SignupComponent],
   imports: [
     CommonModule,
     FormsModule,
-    ToastrService,
+    ToastrModule,
     RouterModule.forChild([
       {path:'signup',component:SignupComponent}
     ])

@@ -3,6 +3,7 @@ import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -31,8 +32,6 @@ export class SignupComponent implements OnInit
 
     if (!this.firstName) {
       this.toastr.warning('enter first name')
-     
-
     } else if (!this.lastName) {
       this.toastr.warning('enter last name')
 
@@ -44,11 +43,8 @@ export class SignupComponent implements OnInit
 
     } else if (!this.password) {
       this.toastr.warning('enter password')
-     
-
     } else if (!this.apiKey) {
       this.toastr.warning('Enter your API key')
-
     } else {
 
       let data = {
@@ -59,37 +55,26 @@ export class SignupComponent implements OnInit
         password: this.password,
         apiKey: this.apiKey
       }
-
       console.log(data);
-
       this.appService.signupFunction(data)
-        .subscribe((apiResponse) => {
-
+        .subscribe((apiResponse) => 
+        {
           console.log(apiResponse);
-
-          if (apiResponse.status === 200) {
-
+          if (apiResponse.status === 200) 
+          {
             this.toastr.success('Signup successful');
-
             setTimeout(() => {
-
               this.goToSignIn();
-
             }, 2000);
-
-          } else {
-
+          } 
+          else 
+          {
             this.toastr.error(apiResponse.message);
-
           }
-
-        }, (err) => {
-
+        }, (err) => 
+        {
           this.toastr.error('some error occured');
-
         });
-
     } // end condition
-
   } // end signupFunction
 }
