@@ -14,6 +14,8 @@ import { observable } from 'rxjs';
 })
 export class AppService {
   private url='https://chatapi.ediwsor.com';
+  private email;
+  private password
 
   constructor(public http: HttpClient) { }
 
