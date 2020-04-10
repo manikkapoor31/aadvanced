@@ -14,9 +14,6 @@ import { observable } from 'rxjs';
 })
 export class AppService {
   private url='https://chatapi.ediwsor.com';
-  private email;
-  private password
-
   constructor(public http: HttpClient) { }
 
   public getUserInfoFromLocalStorage=()=>{
@@ -25,7 +22,6 @@ export class AppService {
 
   public setUserInfoInLocalStorage=(data)=>{
     localStorage.setItem('userInfo',JSON.stringify(data))
-
   }
 
   public signupFunction(data):Observable<any>
@@ -37,16 +33,15 @@ export class AppService {
     .set('email',data.email)
     .set('password',data.password)
     .set('apiKey',data.apiKey);
-
-    return this.http.post('${this.url}/api/v1/users/signup',params);
+    return this.http.post(`${this.url}/api/v1/users/signup`,params);
   }
   public signinFunction(data):Observable<any>
   {
+    console.log("inside signin function");
     const params=new HttpParams()
     .set('email',data.email)
     .set('password',data.password);
-
-    return this.http.post('${this.url}/api/v1/users/login',params)
+    return this.http.post(`${this.url}/api/v1/users/login`,params)
   }
   private handleError(err: HttpErrorResponse){
     let errorMessage='';

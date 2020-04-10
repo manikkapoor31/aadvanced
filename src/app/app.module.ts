@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import {ActivatedRoute, RouterModule} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import { AppComponent } from './app.component';
 import { ChatModule } from './chat/chat.module';
 import { UserModule } from './user/user.module';
@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { SignupComponent } from './user/signup/signup.component';
+import { RouterModule,Routes} from '@angular/router'
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import {HttpClientModule} from '@angular/common/http';
       {path:'login',component: LoginComponent,pathMatch:'full'},
       {path: '',redirectTo: 'login',pathMatch:'full'},
       {path: '*',component:LoginComponent},
-      {path: '**',component:LoginComponent}
+      {path: '**',component:LoginComponent},
+      {path: 'sign-up',component:SignupComponent}
     ])
   ],
   providers: [],

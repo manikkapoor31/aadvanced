@@ -6,23 +6,19 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
-  templateUrl: '././login.component.html',
+  templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
   public email: any;
   public password: any;
-
   constructor(public appService: AppService,public router: Router,private toastr: ToastrService) 
   {}
-  
   ngOnInit() 
   {}
-
   public goToSignUp: any = () => {
-
-    this.router.navigate(['/sign-up']);
+    this.router.navigate(['/sign-Up']);
   } // end goToSignUp
   public signinFunction: any = () => 
   {

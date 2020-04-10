@@ -15,7 +15,7 @@
 <div class="row p-0 m-0"></div>
     <div class="col-sm"></div>
     <div class="col-sm p-5">
-      <form #createchatsignupform="ngForm" (ngSubmit)="signinFunction()">
+      <form #createchatsigninform="ngForm" (ngSubmit)="signinFunction()">
         <div class="form-group">
           <h2 class="form-signin-heading">Please sign in</h2>
           <label for="inputEmail" class="sr-only">Email address</label>
@@ -24,7 +24,7 @@
           <label for="inputPassword" class="sr-only">Password</label>
           <input type="password" id="inputPassword" class="form-control" [(ngModel)]="password" name ="userPassword" placeholder="Password" required>
           <br>
-          <button class="btn btn-lg btn-primary btn-block" type="button" (click)="signinFunction()">Sign in</button>
+          <button class="btn btn-lg btn-primary btn-block" type="button" (click)="signinFunction()"> Sign in</button>
         <!--</div>-->
       <!--</form>-->
     <!--</div>-->
