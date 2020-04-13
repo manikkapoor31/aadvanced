@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import {ActivatedRoute} from '@angular/router';
 import { AppComponent } from './app.component';
 import { ChatModule } from './chat/chat.module';
 import { UserModule } from './user/user.module';
@@ -31,7 +30,7 @@ import { RouterModule,Routes} from '@angular/router'
       {path: '',redirectTo: 'login',pathMatch:'full'},
       {path: '*',component:LoginComponent},
       {path: '**',component:LoginComponent},
-      {path: 'sign-up',component:SignupComponent}
+      //{path: 'sign-up',component:SignupComponent}
     ])
   ],
   providers: [],

@@ -8,22 +8,21 @@ import 'rxjs/add/operator/toPromise';
 
 import {HttpClient,HttpHeaders} from '@angular/common/http';
 import { HttpErrorResponse,HttpParams} from '@angular/common/http';
-import { observable } from 'rxjs';
-@Injectable({
-  providedIn: 'root'
-})
-export class AppService {
+
+@Injectable(/*{providedIn: 'root'}*/)
+export class AppService
+{
   private url='https://chatapi.ediwsor.com';
   constructor(public http: HttpClient) { }
 
-  public getUserInfoFromLocalStorage=()=>{
+  public getUserInfoFromLocalStorage=()=>
+  {
     return JSON.parse(localStorage.getItem('userInfo'));
   }
-
-  public setUserInfoInLocalStorage=(data)=>{
+  public setUserInfoInLocalStorage=(data)=>
+  {
     localStorage.setItem('userInfo',JSON.stringify(data))
   }
-
   public signupFunction(data):Observable<any>
   {
     const params=new HttpParams()
@@ -43,10 +42,24 @@ export class AppService {
     .set('password',data.password);
     return this.http.post(`${this.url}/api/v1/users/login`,params)
   }
+  public logout(): Observable<any> {
+
+    const params = new HttpParams()
+      .set('authToken', Cookie.get('authtoken'))
+
+    return this.http.post(`${this.url}/api/v1/users/logout`, params);
+
+  }
   private handleError(err: HttpErrorResponse){
     let errorMessage='';
     if(err.error instanceof Error){
-
+      errorMessage=`An error occured: ${err.error.message}`;
     }
+    else
+    {
+      errorMessage=`Server returned code: ${err.status}, error message is: ${err.message}`;
+    }
+    console.error(errorMessage);
+    return Observable.throw(errorMessage);
   }
 }

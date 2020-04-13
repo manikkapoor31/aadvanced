@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() 
   {}
   public goToSignUp: any = () => {
-    this.router.navigate(['/sign-Up']);
+    this.router.navigate(['/sign-up']);
   } // end goToSignUp
   public signinFunction: any = () => 
   {

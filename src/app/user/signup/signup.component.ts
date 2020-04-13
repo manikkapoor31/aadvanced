@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subscriber } from 'rxjs';
 
 
 @Component({
@@ -59,6 +60,7 @@ export class SignupComponent implements OnInit
       this.appService.signupFunction(data)
         .subscribe((apiResponse) => 
         {
+          console.log("inside cubscribe fn")
           console.log(apiResponse);
           if (apiResponse.status === 200) 
           {
