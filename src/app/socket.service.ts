@@ -5,9 +5,9 @@ import {RouterModule,Routes} from '@angular/router';
 import { Observable} from 'rxjs/Observable';
 import { Cookie} from 'ng2-cookies/ng2-cookies';
 
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/toPromise';
+import {tap,catchError} from 'rxjs/operators';
+import 'rxjs/operator/toPromise';
+
 
 import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { HttpErrorResponse, HttpParams} from '@angular/common/http';
@@ -79,12 +79,12 @@ export class SocketService
    public getChat(senderId,receiverId,skip):Observable<any>
    {
     return this.http.get(`${this.url}/api/v1/chat/get/for/user?senderId=${senderId}&receiverId=${receiverId}&skip=${skip}&authToken=${Cookie.get('authtoken')}`).pipe(
-
-      tap(data => console.log('Data Received')),
-  
+      tap(data => console.log('Data Received')),  
       catchError(this.handleError));
-    )
-      
+  }
+  public getUnseenMessages(senderId):Observable<any>
+  {
+    //return this.http.get(`${this.url}/api/v1/chat/unseen/user/list?senderId=${senderId}&authToken=${Cookie.get('authtoken')}`)
   }
   public chatByUserID=(userId)=>{ //expecting it to have userId
     return Observable.create((observer)=>{ //listen to observable

@@ -8,11 +8,12 @@ import {ToastrService} from 'ngx-toastr'
 import { HttpParams,HttpClient} from '@angular/common/http'
 import {Observable}from 'rxjs/Observable';
 
+
 @Component({
   selector: 'app-chat-box',
   templateUrl: './chat-box.component.html',
   styleUrls: ['./chat-box.component.css'],
-  providers:[SocketService]
+  providers:[SocketService,AppService]
 })
 export class ChatBoxComponent implements OnInit 
 {
@@ -30,6 +31,7 @@ export class ChatBoxComponent implements OnInit
   public messageList: any=[]; //stores the current message list display in chat box 
   public pageValue:number=0;
   public loadingPreviousChat:boolean=false;
+  public unseen:any;
 
   constructor(public appService:AppService,public socketService:SocketService, public toastr:ToastrService,public router:Router,public http:HttpParams) 
   { 
@@ -150,6 +152,24 @@ export class ChatBoxComponent implements OnInit
       if(apiResponse.status==200)
       {
         this.messageList=apiResponse.data.concat(previousData);
+      }
+      else
+      {
+        this.messageList=previousData;
+        this.toastr.warning('no message available');
+      }
+      this.loadingPreviousChat=false;
+    },(err)=>{
+      this.toastr.error('some error occured')
+    })
+  }
+  public markAsRead:any=()=>{
+    
+    this.socketService.getUnseenMessages(this.userInfo.userids).subscribe((apiResponse)=>{
+      console.log(apiResponse);
+      if(apiResponse.status==200)
+      {
+        
       }
       else
       {
