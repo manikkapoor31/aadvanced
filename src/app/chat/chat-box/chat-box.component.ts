@@ -6,7 +6,7 @@ import {Router, Routes} from '@angular/router';
 import { Cookie} from 'ng2-cookies/ng2-cookies';
 import {ToastrService} from 'ngx-toastr'
 import { HttpParams,HttpClient} from '@angular/common/http'
-import {Observable}from 'rxjs/Observable';
+import {Observable}from 'rxjs';
 
 
 @Component({
@@ -163,24 +163,25 @@ export class ChatBoxComponent implements OnInit
       this.toastr.error('some error occured')
     })
   }
-  public markAsRead:any=()=>{
+  /*public markAsRead:any=()=>{
     
-    this.socketService.getUnseenMessages(this.userInfo.userids).subscribe((apiResponse)=>{
+    this.socketService.getUnseenMessages(this.userInfo.userid).subscribe((apiResponse)=>{
       console.log(apiResponse);
       if(apiResponse.status==200)
       {
-        
+        if(this.checkStatus){
+          return true;
+        }
       }
       else
       {
-        this.messageList=previousData;
-        this.toastr.warning('no message available');
+        return false;
       }
       this.loadingPreviousChat=false;
     },(err)=>{
       this.toastr.error('some error occured')
     })
-  }
+  }*/
   public loadEarlierPageOfChat:any=()=>{
     this.loadingPreviousChat=true;
     this.pageValue++;

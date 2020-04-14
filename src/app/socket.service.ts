@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
 
 import {RouterModule,Routes} from '@angular/router';
-import { Observable} from 'rxjs/Observable';
+import { Observable} from 'rxjs';
 import { Cookie} from 'ng2-cookies/ng2-cookies';
 
 import {tap,catchError} from 'rxjs/operators';
@@ -82,9 +82,10 @@ export class SocketService
       tap(data => console.log('Data Received')),  
       catchError(this.handleError));
   }
-  public getUnseenMessages(senderId):Observable<any>
+  public getUnseenMessages(userId)//:Observable<any>
   {
     //return this.http.get(`${this.url}/api/v1/chat/unseen/user/list?senderId=${senderId}&authToken=${Cookie.get('authtoken')}`)
+    //catchError(this.handleError);
   }
   public chatByUserID=(userId)=>{ //expecting it to have userId
     return Observable.create((observer)=>{ //listen to observable

@@ -54,7 +54,8 @@
         <div class="p-3 text-white textCapitalize textCenter">
           {{userInfo.firstName}} {{userInfo.lastName}}
           <i class="fa fa-circle online" *ngIf="disconnectedSocket == false"></i>
-          <i class="fa fa-circle offline" *ngIf="disconnectedSocket == true"></i>
+          <i class="fa fa-circle offline unseen" *ngIf="disconnectedSocket == true && user.checkstatus()"></i>
+          <i class="fa fa-circle unseen" *ngIf="disconnectedSocket == true"></i>
           <br>
           <br> 
         </div>  
@@ -62,7 +63,7 @@
           <li class="p-2 typeOfChats">
             Unread Messages:
           </li>
-          <li class="clearfix cursorPointer" [ngClass]="{'activeChat': user.chating == true}" 
+          <li class="clearfix cursorPointer" [ngClass]="{'unseen': user.chating == false}" 
             *ngFor="let user of userList">
             <div class="userPresence" *ngIf="user.userId != userInfo.userId">  
               <!-- code to display individual users -->  
