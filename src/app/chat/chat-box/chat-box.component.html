@@ -49,6 +49,28 @@
             </div>
           </li>     
         </ul>  
+      </div>
+      <div class="col-12 displayNoneMobile col-sm-4 col-md-4 people-list p-0" id="people-list">  
+        <div class="p-3 text-white textCapitalize textCenter">
+          {{userInfo.firstName}} {{userInfo.lastName}}
+          <i class="fa fa-circle online" *ngIf="disconnectedSocket == false"></i>
+          <i class="fa fa-circle offline" *ngIf="disconnectedSocket == true"></i>
+          <br>
+          <br> 
+        </div>  
+        <ul class="list">
+          <li class="p-2 typeOfChats">
+            Unread Messages:
+          </li>
+          <li class="clearfix cursorPointer" [ngClass]="{'activeChat': user.chating == true}" 
+            *ngFor="let user of userList">
+            <div class="userPresence" *ngIf="user.userId != userInfo.userId">  
+              <!-- code to display individual users -->  
+                {{user.name}}  
+              <!-- code to display individual users -->
+            </div>
+          </li>     
+        </ul>  
       </div>          
     </div>
     <!-- end chat -->  

@@ -76,10 +76,15 @@ export class SocketService
    public markChatAsSeen=(userDetails)=>{
      this.socket.emit('mark-chat-as-seen',userDetails);
    }
-   public getChat(senderId,receiverId,skip):Observable<any>{
-    return this.http.get(`${this.url}/api/v1/chat/get/for/user?senderId=${senderId}&receiverId=${receiverId}&skip=${skip}&authToken=${Cookie.get('authtoken')}`)
-      .do(data => console.log('Data Received'))
-      .catch(this.handleError);
+   public getChat(senderId,receiverId,skip):Observable<any>
+   {
+    return this.http.get(`${this.url}/api/v1/chat/get/for/user?senderId=${senderId}&receiverId=${receiverId}&skip=${skip}&authToken=${Cookie.get('authtoken')}`).pipe(
+
+      tap(data => console.log('Data Received')),
+  
+      catchError(this.handleError));
+    )
+      
   }
   public chatByUserID=(userId)=>{ //expecting it to have userId
     return Observable.create((observer)=>{ //listen to observable
